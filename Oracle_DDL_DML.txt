@@ -1,0 +1,5 @@
+INSERT INTO "user" VALUES (1,'KH1', 35, 'kh@kh.com',TO_DATE('2023-10-05', 'YYYY-MM-DD'), 5000.00);
+INSERT INTO "user" VALUES (2, 'Jane', 25, 'jane@kh.com', TO_DATE('2023-03-23', 'YYYY-MM-DD'), 6000.25);
+
+
+select * from "user" where  age >= 30;
