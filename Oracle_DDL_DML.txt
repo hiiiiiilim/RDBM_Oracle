@@ -1,4 +1,4 @@
-CREATE TABLE user (
+CREATE TABLE "user" (
   user_id NUMBER(5) PRIMARY KEY,
   name VARCHAR2(50),
   age NUMBER(5),
@@ -14,3 +14,38 @@ INSERT INTO "user" (user_id, name, age ,email, hire_date, salary)
 
 SELECT * FROM "user"
 WHERE age >= 30;
+
+CREATE TABLE "user_info" (
+    user_id NUMBER(5) PRIMARY KEY,
+    nickname VARCHAR2(50),
+    pw VARCHAR2(100)
+);
+    
+INSERT INTO "user_info" VALUES (1, 'love', 'lovely');
+INSERT INTO "user_info" VALUES (2, 'jane', 'jane2');
+INSERT INTO "user_info" VALUES (3, 'ppg', 'ppglove');
+INSERT INTO "user_info" VALUES (4, 'user', '1234');
+INSERT INTO "user_info" VALUES (5, 'today', '9090909a');
+
+
+select * from "user_info";
+
+--접속
+sqlplus sys/oracle as sysdba
+
+--세션 변경
+ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+
+-- 사용자 만들기
+CREATE USER khaca IDENTIFIED BY kh1234;
+
+-- db 접속 권한 허용
+GRANT CREATE SESSION TO khac;
+
+-- 사용자가 테이블을 생성할 수 있게 권한을 허락해줌
+GRANT CREATE ANY TABLE TO khac;
+
+--INSERT할 수 있는 권한을 줌
+GRANT CONNECT, RESOURCE, DBA TO khac;
+
+--pk를 설정해주어야 중복 값이 들어가지 않음
