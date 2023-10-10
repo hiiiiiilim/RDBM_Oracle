@@ -1,0 +1,66 @@
+--모든 부서의 평균 급여를 구하기
+select dno, avg(salary)
+from employee
+group by dno
+;
+--급여가 4000 이상인 직원 수를 찾기
+select count(*)
+from employee
+where salary >= 4000
+;
+--부서별로 가장 높은 급여 찾기
+select dno, max(salary)
+from employee
+group by dno;
+--부서별로 직원 수가 3명 이상인 부서 찾기
+select dno, count(*)
+from employee
+group by dno
+having count(*)>=3
+;
+--부서별로 직원 수가 0인 부서 찾기
+
+--부서별로 급여 합계를 구하고, 합계가 20000 이상인 부서 찾기
+select sum(salary)
+from employee
+group by dno
+having sum(salary) >= 20000;
+
+--각 부서에서 가장 오래된 직원 찾기
+select dno, min(hiredate)
+from employee
+group by dno;
+--부서별로 직원의 직무 수 찾기
+select dno, manager, count(*)
+from employee
+group by dno, manager
+order by dno desc;
+--부서별로 최소 급여가 3000 이상인 직원 찾기
+select dno, min(salary)
+from employee
+group by dno
+having min(salary) >= 3000;
+
+--부서별로 급여 합계가 10000 이상이고 직원 수가 2명 이상인 부서 찾기
+select dno, sum(salary), count(*)
+from employee
+group by dno
+having sum(salary)>=10000 and count(*)>=2;
+
+--부서별로 직원의 입사일자가 2023-01-01 이후인 직원 수 찾기
+select dno, count(*)
+from employee
+group by dno
+having hiredate >= '2023-01-01';
+--급여가 가장 높은 직원 찾기
+select ename
+from employee
+where salary in(
+select max(salary)
+from employee);
+--급여가 가장 높은 직무 찾기
+select manager
+from employee
+where salary in(
+select max(salary)
+from employee);
