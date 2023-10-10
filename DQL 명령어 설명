@@ -66,3 +66,22 @@
                 select d.dno, d.name, e.eno, e.ename
                 from department d
                 full join employee on d.dno=e.dno;
+    
+    'CASE문
+      - 조건에 따라 다른 결과를 반환하는데 사용
+      - 주로 select 문에 사용
+      - 다양한 조건에 따라 다른 값을 출력하거나 계산하는데 유용
+      - 예제 코드:
+        case
+            when 조건1 then 결과1(조건에 따라 표현하고자 하는 결과 작성)
+            when 조건2 then 결과2
+            when 조건n then 결과n
+            else 기본값
+        end
+      -  코드 설명
+        case 다음에 when절을 사용해서 조건을 지정
+        조건이 만족 되는 경우 해당 조건의 결과를 반환
+        then 조건을 만족했을때 반환할 결과값을 지정
+        여러 when을 사용해서 여러 조건을 처리할 수 있으며, 각 조건에 해당하는 결과를 정의
+        else 모든 조건이 만족되지 않을 때 반환할 기본값을 정의하는데 사용(선택사항)
+        end case문을 종료함음 나타내는 구문
