@@ -34,15 +34,35 @@
                   INNER JOIN customers ON o.C_ID = c.C_ID;
           'join내 다양한 조인문 설명작성
           INNER JOIN : 데이터베이스에서 여러 테이블 간의 관계를 설정하고 데이터를 결합하는데 사용. 두개 이상의 테이블을 연결하여 공통된 값을 기준으로 행 결합
+                      일치하는 행만 반환(=join)
+            예제코드) 부서와 직원테이블을 조인하여 각 직원의 부서 정보를 가져옴
+                    select e.eno, e.ename, d.dname
+                    from employee e
+                    join department d on e.dno=d.dno;
           LEFT JOIN : 왼쪽 테이블(첫번째 테이블)의 모든 행을 포함
                       오른쪽 테이블에서 일치하는 행을 선택
                       왼쪽 테이블에 있는 모든 행이 결과 집합에 포함되고
                       오른쪽 테이블과 일치하는 행이 없으면 null 값이 포함
+                      왼쪽 테이블의 모든 행을 반환
+              예제코드) 모든 부서와 부서에 속한 직원을 가져오기, 만약에 부서에 속한 직원이 없는 경우에는 부서정보 포함하기
+                      select d.dno, d.dname, e.eno, e.ename
+                      from department d
+                      left join employee e on d.dno=e.dno
           RIGHT JOIN : 오른쪽 테이블의 모든 행을 포함
                       왼쪽 테이블에서 일치하는 행을 선택
                       오른쪽 테이블에 있는 모든 행이 결과집합에 포함
                       왼쪽 테이블과 일치하는 행이 없으면 null값 포함
+                      오른쪽 테이블의 모든 행을 반환
+            예제코드) 모든 직원과 직원이 속한 부서 정보 가져오기, 부서에 속하지 않은 경우도 직원정보 포함
+                    select e.eno, e.ename, d.dno, d.dname
+                    from employee e
+                    right join department d on e.dno=d.dno;
           FULL JOIN(FULL OUTER JOIN) : 왼쪽 테이블과 오른쪽 테이블의 모든 행을 포함. 양쪽 테이블의 모든 데이터를 모두 가져옴
                                       일치하는 행이 있는 경우에는 해당 데이터를 포함
                                       왼쪽테이블 또는 오른쪽 테이블의 한쪽에만 있는 데이터는 null 값이 포함됨
                                       주로 양쪽 테이블의 모든 데이터를 가져와야할때 사용
+                                      양쪽 테이블의 모든 행을 반환
+            예제코드)
+                select d.dno, d.name, e.eno, e.ename
+                from department d
+                full join employee on d.dno=e.dno;
