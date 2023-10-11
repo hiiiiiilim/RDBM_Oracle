@@ -24,7 +24,7 @@
     BEGIN
         SELECT  어떤값의_id_seq.NEXTCAL
         INTO : NEW.어떤값의_id
-        FROM dual
+        FROM dual;
     END;
     'CREATE OR REPLACE TIGGER :트리거를 생성 또는 변경하는 명령
     'OR REPLACE: 이미 동일한 이름의 트리거가 있는 경우 덮어쓰기를 허용
