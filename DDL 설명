@@ -59,11 +59,18 @@ GRANT 사용 예제 :
   예제 코드:
   ALTER TABLE employee MODIFY (JOB VARCHAR(30 BYTE));
   코드설명 : 'EMPLOYEE'테이블에서 'JOB'열에 입력된 값이 열의 최대 길이를 초과하여 문제가 발생했을 경우 ALTER와 MODIFY를 작성하여 JOB열의 크기를 변경할 수 있다.
-- DROP(삭제)
-  DROP TABLE: 테이블 삭제
-  DROP VIEW: 뷰 삭제
+
+- DROP(삭제):데이터베이스 에서 객체(테이블, 뷰, 인덱스, 사용자 등) 를 삭제하는데 사용되는 sql 명령어, 영구삭제
+  DROP TABLE 테이블이름: 테이블 삭제
+  DROP VIEW 뷰이름: 뷰 삭제
   DROP DATABASE: 데이터베이스 삭제
-  DROP INDEX: 데이터 인덱스 삭제
+  DROP INDEX 인덱스이름: 데이터 인덱스 삭제
+  DROP USER 사용자이름: 유저 삭제
+
+- CASCADE : 해당 명령이 연결된 객체 또는 데이터에 영향 주는 방식 지정, 주로 삭제 명령으로 사용
+            삭제 명령이 관련된 모든 객체나 데이터를 삭제
+            DROP TABLE 부모테이블 CASCADE CONSTRAINTS;
+
 - GRANT(권한) :  권한을 부여하는 키워드 
   SELECT INSERT UPDATE DELETE CREATE TABLE 등 수행하는 권한을 지정할 수 있음.
   GRANT 권한 TO 역할 또는 사용자 [WITH GRANT OPTION];
