@@ -101,3 +101,14 @@ select ename,hiredate,
         else '3개월 이상'
         end as workmonth
 from employee
+
+-- salgrade테이블에서 급여 등급을 추출하여 합치기
+--직원의 이름과 연봉추출
+select ename, salary
+from employee
+union --두개의 select결과문을 합침, 이결과에서 중복 행을 제거하고 정렬된 상태로 반환
+--급여등급 추출
+select 'salgrade' as ename, grade as salary
+from salgrade;
+
+select distinct grade, losal, hisal from salgrade;
