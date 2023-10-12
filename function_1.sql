@@ -95,7 +95,15 @@ select
     -- 각 주문에 대한 누적 가격을 계산할 수 있음
 from orders;
 
- 
+ -- lower  문자열을 소문자로 변경
+ -- upper  문자열을 대문자로 변환
+ -- initcap 각 단어의 첫글자를 대문자로 변환
+ -- substr 문자열의 (1~5) 일부분 추출
+ -- trim ' Hello, World ' 양쪽 공백 제거
+ --ltrim ' Hello, World ' 왼쪽 공백제거
+ --rtrim  ' Hello, World ' 오른쪽 공백제거
+ --왼쪽에 문자열을 채우고 싶다. -> lpad활용
+    select lpad('5',4,'0') from dual;
  
  
  
