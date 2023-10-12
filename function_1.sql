@@ -104,6 +104,19 @@ from orders;
  --rtrim  ' Hello, World ' 오른쪽 공백제거
  --왼쪽에 문자열을 채우고 싶다. -> lpad활용
     select lpad('5',4,'0') from dual;
+
+--문자열에서 특정 문자 또는 문자열을 다른 문자열로 대체
+select replace (description, '풍미', '맛')from menu;
+select product_name, replace(product_name, '스마트', '똑똑한')
+from products;
+
+--concat두문자열을 결합
+select product_name || '가격 : $' || to_char(price, '999.99')
+from products;
+
+--substr 문자열 일부를 추출해줌
+select product_name, substr(product_name, 1,3)
+from products;
  
  
  
