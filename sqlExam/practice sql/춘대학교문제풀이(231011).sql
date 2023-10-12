@@ -60,7 +60,7 @@ order by category;
 select student_no, student_name, student_ssn
 from tb_student
 where absence_yn =  'N'
-and student_no like 'A2%'
+and extract(year from ENTRANCE_DATE)=02
 and student_address like '¿¸¡÷%';
 
 SELECT STUDENT_NO, STUDENT_NAME, STUDENT_SSN

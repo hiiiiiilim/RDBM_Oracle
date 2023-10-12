@@ -1,0 +1,95 @@
+--[Additional select - 함수]
+
+--1.
+select student_no, student_name, entrance_date
+from tb_student
+where department_no =(
+select department_no
+from tb_department
+where department_name ='영어영문학과')
+order by entrance_date;
+
+--2.
+select professor_name, professor_ssn
+from tb_professor
+where length(professor_name) !=3;
+
+--3.
+select professor_name as 교수이름, to_number(to_char(sysdate, 'YYYY')) -to_number(19||substr(professor_ssn, 1,2)) as 나이
+from tb_professor
+where substr(professor_ssn, 8,1)=1;
+
+--4. 
+select substr(professor_name, 2) as 이름
+from tb_professor;
+
+--5
+
+--6.
+
+--7.
+
+--8. 
+select * 
+from tb_student 
+where student_no not in (
+select student_no
+from tb_student
+where student_no like 'A%')
+
+--9.
+select round(sum(point)/count(*),1) as 평점
+from tb_grade
+group by student_no
+having student_no = (
+	select student_no
+	from tb_student
+	where student_name = '한아름'
+);
+
+SELECT ROUND(AVG(POINT), 1) 평점 FROM TB_GRADE
+WHERE STUDENT_NO = (
+	select student_no
+	from tb_student
+	where student_name = '한아름'
+);
+
+--10.
+select department_no as "학과번호", count(*) as "학생수(명)"
+from tb_student
+group by department_no
+order by department_no
+;
+
+--11.
+select count(*)
+from tb_student
+where coach_professor_no is null;
+
+
+--12.
+select substr(term_no, 1,4), round(avg(point),1)
+from tb_grade
+where student_no ='A112113'
+group by substr(term_no, 1,4)
+;
+
+--13.
+select DEPARTMENT_NO, count(*) 
+from tb_student
+group by DEPARTMENT_NO
+order by department_no;
+
+--14.
+select student_name as "동일이름", count(*) as "동명인 수"
+from tb_student
+group by student_name
+having count(*) >1 ;
+
+--15.
+select substr(term_no, 1,4), substr(term_no, 5,5), point
+from tb_grade
+where student_no ='A112113'
+group by substr(term_no, 1,4), substr(term_no, 5,5), 
+
+
