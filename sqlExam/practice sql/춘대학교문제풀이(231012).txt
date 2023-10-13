@@ -24,9 +24,13 @@ select substr(professor_name, 2) as 이름
 from tb_professor;
 
 --5
+select student_no, student_name
+from tb_student
+where extract(year from entrance_date)-extract(year from to_date(substr(student_ssn,1,6))) > 19;
 
 --6.
-
+select to_char(to_date('20201225'), 'day')
+from dual;
 --7.
 
 --8. 
@@ -87,9 +91,9 @@ group by student_name
 having count(*) >1 ;
 
 --15.
-select substr(term_no, 1,4), substr(term_no, 5,5), point
+select substr(term_no, 1,4), substr(term_no, 5,2), round(avg(point),1)
 from tb_grade
 where student_no ='A112113'
-group by substr(term_no, 1,4), substr(term_no, 5,5), 
-
+group by rollup(substr(term_no, 1,4), substr(term_no, 5,2))
+order by substr(term_no, 1,4);
 
